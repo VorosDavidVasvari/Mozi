@@ -51,6 +51,18 @@ def CalcIncome(seats: list) -> int:
 
     return income
 
+def SeatUtilization(seats: list) -> float:
+    usedSeatsCont: int = 0
+
+    for i in range(len(seats)):
+        for j in range(len(seats[i])):
+            for k in range(len(seats[i][j])):
+                if seats[i][j][k] != 'E':
+                    usedSeatsCont += 1
+
+    utilization: float = usedSeatsCont / (15 * 20)
+    return utilization
+
 def Main() -> None:
     seats: list = []
     InitSeats(seats)
@@ -62,6 +74,7 @@ def Main() -> None:
         print(f"A {reqSeatRes}. sorban vannak a székeik")
 
     print(f"Mozi bevétel: {CalcIncome(seats)}")
+    print(f"Terem felhasználtsága: {round(SeatUtilization(seats) * 100, 2)}%")
 
 if __name__ == "__main__":
     Main()
