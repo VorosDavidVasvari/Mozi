@@ -78,7 +78,22 @@ def Main() -> None:
     seats: list = []
     InitSeats(seats)
     FillUpSeats(seats)
-    reqSeatRes = RequestSeats(3, seats)
+
+    howManySeatsNeeded = -1
+    print("Mennyi ülőhelyet kíván az emberünk: ", end='')
+    try:
+        howManySeatsNeeded = int(input())
+    except:
+        print("Kérem számot adjon meg!")
+
+    while howManySeatsNeeded not in range(2, 6):
+        print("Kérem 2 és 5 között adjon értéket: ", end='')
+        try:
+            howManySeatsNeeded = int(input())
+        except:
+            print("Kérem számot adjon meg!")
+
+    reqSeatRes = RequestSeats(howManySeatsNeeded, seats)
     if reqSeatRes < 0:
         print("Nincsen annyi üres szék egymás mellet amennyit kért")
     else:
