@@ -32,14 +32,14 @@ def RequestSeats(seatAmount: int, seats: list) -> int:
 
     return -1
 
+def PrintSeats(seats: list) -> None:
+    for i in range(len(seats)):
+        print(seats[i])
+
 def Main() -> None:
     seats: list = []
     InitSeats(seats)
     FillUpSeats(seats)
-
-    for i in range(len(seats)):
-        print(seats[i])
-
     print(RequestSeats(3, seats))
 
 if __name__ == "__main__":
