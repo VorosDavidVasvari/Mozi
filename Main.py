@@ -36,11 +36,32 @@ def PrintSeats(seats: list) -> None:
     for i in range(len(seats)):
         print(seats[i])
 
+def CalcIncome(seats: list) -> int:
+    income: int = 0
+
+    for i in range(len(seats)):
+        for j in range(len(seats[i])):
+            for k in range(len(seats[i][j])):
+                if seats[i][j][k] == 'A':
+                    income += 2500
+                elif seats[i][j][k] == 'S':
+                    income += 2100
+                elif seats[i][j][k] == 'E':
+                    income += 1300
+
+    return income
+
 def Main() -> None:
     seats: list = []
     InitSeats(seats)
     FillUpSeats(seats)
-    print(RequestSeats(3, seats))
+    reqSeatRes = RequestSeats(3, seats)
+    if reqSeatRes < 0:
+        print("Nincsen annyi üres szék egymás mellet amennyit kért")
+    else:
+        print(f"A {reqSeatRes}. sorban vannak a székeik")
+
+    print(f"Mozi bevétel: {CalcIncome(seats)}")
 
 if __name__ == "__main__":
     Main()
