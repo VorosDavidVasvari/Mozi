@@ -63,6 +63,17 @@ def SeatUtilization(seats: list) -> float:
     utilization: float = usedSeatsCont / (15 * 20)
     return utilization
 
+def CountFullPricePass(seats: list) -> int:
+    fullPricePassCount: int = 0
+
+    for i in range(len(seats)):
+        for j in range(len(seats[i])):
+            for k in range(len(seats[i][j])):
+                if seats[i][j][k] != 'A':
+                    fullPricePassCount += 1
+
+    return fullPricePassCount
+
 def Main() -> None:
     seats: list = []
     InitSeats(seats)
@@ -73,8 +84,9 @@ def Main() -> None:
     else:
         print(f"A {reqSeatRes}. sorban vannak a székeik")
 
-    print(f"Mozi bevétel: {CalcIncome(seats)}")
+    print(f"Mozi bevétel: {CalcIncome(seats)}Ft")
     print(f"Terem felhasználtsága: {round(SeatUtilization(seats) * 100, 2)}%")
+    print(f"Teljes árú jegyek száma: {CountFullPricePass(seats)}db")
 
 if __name__ == "__main__":
     Main()
