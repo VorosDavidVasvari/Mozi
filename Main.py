@@ -69,7 +69,7 @@ def CountFullPricePass(seats: list) -> int:
     for i in range(len(seats)):
         for j in range(len(seats[i])):
             for k in range(len(seats[i][j])):
-                if seats[i][j][k] != 'A':
+                if seats[i][j][k] == 'A':
                     fullPricePassCount += 1
 
     return fullPricePassCount
