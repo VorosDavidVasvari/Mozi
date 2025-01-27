@@ -2,13 +2,13 @@ import random
 
 POSSIBLE_SEAT_STATES = ['A', 'S', 'K', 'E']
 
-def InitSeats(seats: list) -> list:
+def InitSeats(seats: list) -> None:
     for i in range(15):
         seats.append([[], []])
 
     return seats
 
-def FillUpSeats(seats: list) -> list:
+def FillUpSeats(seats: list) -> None:
     for i in range(len(seats)):
         for j in range(len(seats[i])):
             for k in range(10):
@@ -16,10 +16,31 @@ def FillUpSeats(seats: list) -> list:
 
     return seats
 
-def Main():
+def RequestSeats(seatAmount: int, seats: list) -> int:
+    availableNumSeatsInRow: int = 0
+
+    for i in range(len(seats)):
+        for j in range(len(seats[i])):
+            for k in range(len(seats[i][j])):
+                if seats[i][j][k] == 'E':
+                    availableNumSeatsInRow += 1
+                else:
+                    availableNumSeatsInRow = 0
+
+                if availableNumSeatsInRow == seatAmount:
+                    return i + 1
+
+    return -1
+
+def Main() -> None:
     seats: list = []
     InitSeats(seats)
     FillUpSeats(seats)
+
+    for i in range(len(seats)):
+        print(seats[i])
+
+    print(RequestSeats(3, seats))
 
 if __name__ == "__main__":
     Main()
