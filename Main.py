@@ -47,7 +47,7 @@ def Main():
     InitSeats(seats)
     FillUpSeats(seats)
     howManySeatsNeeded=-1
-    print("Mennyi ülőhelyet kíván az emberünk ",end='')
+    print("Mennyi ülőhelyet kíván az emberünk: ",end='')
     try:howManySeatsNeeded=int(input())
     except:print("Kérem számot adjon meg!")
     while howManySeatsNeeded not in range(2,6):
